@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/Slice/userSlice";
+import { LoginPage_backgrd } from "../Utils/constant";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+             
             })
             .catch((error) => {
               // An error occurred
@@ -93,7 +94,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
+         
           // ...
         })
         .catch((error) => {
@@ -112,7 +113,7 @@ const Login = () => {
           <img
             className="z-10"
             alt="logo"
-            src="https://assets.nflxext.com/ffe/siteui/vlv3/f85718e8-fc6d-4954-bca0-f5eaf78e0842/ea44b42b-ba19-4f35-ad27-45090e34a897/IN-en-20230918-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+            src={LoginPage_backgrd}
           />
         </div>
       </div>
