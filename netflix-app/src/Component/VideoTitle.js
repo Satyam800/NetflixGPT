@@ -4,13 +4,13 @@ import { useSelector,useDispatch } from 'react-redux'
 const VideoTitle = () => {
   const dispatch=useDispatch()
     const movieData=useSelector(store=>store.movies.movie)
-    const trailerData=movieData?.results[6]
+    const trailerData=movieData?.results[7]
     console.log(trailerData,"title");
   return (
-   <div className=' absolute top-0 w-screen h-screen sm:h-[50%] bg-gradient-to-b from-black opacity-150 hover:opacity-70 sm:mt-[8%] text-white'>
+   <div className=' absolute top-0 w-screen  h-[95%] sm:h-[50%]  bg-gradient-to-b from-black opacity-150 hover:opacity-70  text-white'>
 <div className='mt-[18%]'>
 <div className='w-48 text-4xl sm:text-xl sm:ml-[2%]  text-center rounded-md font-semibold ml-[4%] '> {trailerData.title}</div>
-   <div className='w-[33%] sm:w-[50%] sm:text-sm sm:h-18  space-y-4  py-4 font-serif pl-4 sm:opacity-100 sm:text-slate-100 '>{trailerData.overview}</div>
+   <div className='w-[20%] sm:w-[40%] ml-[2%] m:w-[40%] sm:text-sm sm:h-18  space-y-4  py-4 font-serif pl-4 sm:opacity-100 sm:text-slate-100 '>{trailerData.overview}</div>
 </div>
 
    <div className='flex ml-[4%]'>

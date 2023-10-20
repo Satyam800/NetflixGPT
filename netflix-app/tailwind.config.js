@@ -9,6 +9,9 @@ module.exports = {
         sm: "360px",
         // => @media (min-width: 992px) { ... }
       },
+      height: {
+        '1/2': '50%',
+      },
     },
   },
   plugins: [],

@@ -1,5 +1,5 @@
 import { createSlice,createAsyncThunk,extraReducers} from "@reduxjs/toolkit";
-import { API_options,VideoAPI_Option } from "../constant";
+import { API_options,VideoAPI_Option,Popular_options } from "../constant";
 export const fetchData=createAsyncThunk( "action",async ()=>{
   console.log("ccccc");
     const movie=await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', API_options)
@@ -13,12 +13,35 @@ export const trailer=createAsyncThunk("trailer",async (id)=>{
    return trailer.json()
 })
 
+export const popular_movie=createAsyncThunk("popular",async ()=>{
+  const movie=await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', API_options)
+  return movie.json()
+})
+    
+export const upcoming_movies=createAsyncThunk("upcoming",async ()=>{
+  const movie=await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', API_options)
+  return movie.json()
+
+})
+
+
+export const top_rated=createAsyncThunk("top_rated",async ()=>{
+  const movie=await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',API_options)
+  console.log(movie,"checking promise");
+  return movie.json()
+
+})
+
 const movieSlice = createSlice({
   name: "movies",
   initialState: {
     movie:null,
     trailer:null,
-    trialerVideo:null
+    trialerVideo:null,
+    popular:null,
+    upcoming:null,
+    top_movie:null
+
   },
   reducers: {
     trailerVideo:(state,action)=>{
@@ -33,6 +56,15 @@ const movieSlice = createSlice({
     }).addCase(trailer.fulfilled,(state,action)=>{
       console.log(action.payload,"trailer");
   state.trailer=action.payload
+    }).addCase(popular_movie.fulfilled,(state,action)=>{
+      console.log(action.payload,"popoular");
+      state.popular=action.payload
+    }).addCase(upcoming_movies.fulfilled,(state,action)=>{
+      console.log(action.payload,"upcoming");
+      state.upcoming=action.payload
+    }).addCase(top_rated.fulfilled,(state,action)=>{
+      console.log(action.payload,"top");
+      state.top_movie=action.payload
     })
   }
 });

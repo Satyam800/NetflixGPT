@@ -4,11 +4,14 @@ import { fetchData } from "../Utils/Slice/movieSlice";
 
 const useMovieList = () => {
    
-
+  const movieData=useSelector(store=>store.movies.movie)
     const dispatch=useDispatch()
       
     useEffect(()=>{
-      dispatch(fetchData())
+      if(!movieData)  {
+        dispatch(fetchData())
+     
+      }
 
     },[])
 

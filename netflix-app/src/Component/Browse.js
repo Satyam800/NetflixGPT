@@ -6,32 +6,33 @@ import { useDispatch,useSelector } from "react-redux";
 import useMovieList from "../hooks/useMovieList";
 import MainConatainer from "./MainConatainer";
 import SecondaryContainer from "./SecondaryContainer";
+import GPTSearchContainer from "./GPTSearchContainer";
 const Browse = () => {
    useMovieList()
   const Movies=useSelector(store=>store.movies.movie)
- console.log(Movies);
+ const isGPTComponent=useSelector((store)=>store.GPT.isGPTSearchClicked)
+ 
   return (
     <>
     <Header/>
     
-    {/* <div className="relative">
-      <img className="sm:w-full sm:h-full"
-      alt={"image"}
-      src={BrowsePage_BG}
-      />
+ 
 
 
- <div className=" flex absolute top-16 left-[25%] w-[60%] h-12 bg-black">
- <input className=" w-[70%] sm:w-[60%] h-[70%] m-2 p-1 placeholder:Enter to search movies" />
- <span></span>
-  </div>  
+<div>
+{
+  isGPTComponent?(<GPTSearchContainer/>)
+  :
+ (
 
-   </div> */}
-
-
-  
+<>
 <MainConatainer/>
-<SecondaryContainer/>
+  <SecondaryContainer/>
+  </>
+ )
+}
+</div>
+
   
 
     
