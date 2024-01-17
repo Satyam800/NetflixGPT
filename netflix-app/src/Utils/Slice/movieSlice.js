@@ -1,12 +1,12 @@
 import { createSlice,createAsyncThunk,extraReducers} from "@reduxjs/toolkit";
 import { API_options,VideoAPI_Option,Popular_options } from "../constant";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
+
 export const fetchData=createAsyncThunk( "action",async ()=>{
-  console.log("ccccc");
     const movie=await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', API_options)
-    
     return movie.json()
 })
-
 export const trailer=createAsyncThunk("trailer",async (id)=>{
   console.log(id,'id');
    const trailer= await fetch('https://api.themoviedb.org/3/movie/'+id+'/videos?language=en-US', VideoAPI_Option)
@@ -27,7 +27,6 @@ export const upcoming_movies=createAsyncThunk("upcoming",async ()=>{
 
 export const top_rated=createAsyncThunk("top_rated",async ()=>{
   const movie=await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',API_options)
-  console.log(movie,"checking promise");
   return movie.json()
 
 })
@@ -40,22 +39,25 @@ const movieSlice = createSlice({
     trialerVideo:null,
     popular:null,
     upcoming:null,
-    top_movie:null
+    top_movie:null,
+    hover:false
 
   },
   reducers: {
     trailerVideo:(state,action)=>{
         state.trailerVideo=action.payload
+    },
+    ishover:(state,action)=>{
+      console.log(action.payload,"false");
+      state.hover=action.payload
     }
-    
   },
   extraReducers:(builder)=>{
     builder.addCase(fetchData.fulfilled,(state,action)=>{
         state.movie=action.payload
-        console.log(action.payload.results);
     }).addCase(trailer.fulfilled,(state,action)=>{
-      console.log(action.payload,"trailer");
-  state.trailer=action.payload
+      console.log(action?.payload,"trailer");
+  state.trailer=action?.payload
     }).addCase(popular_movie.fulfilled,(state,action)=>{
       console.log(action.payload,"popoular");
       state.popular=action.payload
@@ -69,6 +71,5 @@ const movieSlice = createSlice({
   }
 });
 
-export const { trailerVideo } = movieSlice.actions;
-
+export const { trailerVideo,ishover } = movieSlice.actions;
 export default movieSlice.reducer; 

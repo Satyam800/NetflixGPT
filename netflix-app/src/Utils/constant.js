@@ -24,7 +24,10 @@ export const API_options= {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNWZlZmUyNzVhYWU3Y2U0MWRjOGVhOWRiZTg2ZTA3OSIsInN1YiI6IjYzZTBlM2MwODc0MWM0MDA5OWI1NWRiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6WGCQf3e-YU-701l-n9HMez-eZC8adbEob3t7ABkE7k'
     }
   };
+
+  
   export const IMG_CDN_URL="https://image.tmdb.org/t/p/w500"
 
   export const OpenAI_API_keys=process.env.REACT_APP_OpenAI_API_keys
   export const Supported_Language=[{identifier:"English",name:"English"},{identifier:"Hindi",name:"Hindi"},{identifier:"Spanish",name:"Spanish"}]
+  export const Logo=" https://img.freepik.com/premium-vector/cinema-movie-background-popcorn-filmstrip-clapboard-tickets-movie-time-background_41737-248.jpg?size=626&ext=jpg&ga=GA1.1.1099964274.1705469206&semt=ais"
