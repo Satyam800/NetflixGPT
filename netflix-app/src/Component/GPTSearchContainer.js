@@ -13,14 +13,16 @@ const GPTSearchContainer = () => {
   const SearchText=useRef(null)
   const toggelLang=useSelector(store=>store.lang.languageChange)
   const TMDB_movie=useSelector((store)=>store.GPT.movie_array)
+  const TMDB_SearchResult=useSelector(store=>store.GPT.final_result)
  
- 
-  const handleOpenAISearch=async()=>{   
-    dispatch(API_call(SearchText)) 
-    
+  const handleOpenAISearch=()=>{   
+    dispatch(API_call(SearchText))  
    dispatch(Movie_fetch(TMDB_movie))
+   
     }
- 
+    
+ console.log("rensered");
+
   return (
    <>
     <div className=" fixed top-0 -z-10">
@@ -44,7 +46,7 @@ onClick={handleOpenAISearch}
 </div>
 
 
-<GptmovieSuggs/>
+{TMDB_SearchResult?.length ? <GptmovieSuggs/>:null}
 
  
    </>

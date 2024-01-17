@@ -10,7 +10,7 @@ const GptmovieSuggs = () => {
   {
     <div className='  flex flex-wrap '>
 
-{TMDB_SearchResult?.map(i=><MovieCard img={i.poster_path} title={i.title} key={i.id}/>)}
+{TMDB_SearchResult?.map(i=><MovieCard img={i?.poster_path} title={i.title} key={i.id}/>)}
     </div>
   }
 </div>

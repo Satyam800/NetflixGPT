@@ -6,10 +6,12 @@ import { trailer } from '../Utils/Slice/movieSlice'
 
 const MainConatainer = () => {
   const dispatch=useDispatch()
-    const movieData=useSelector(store=>store.movies.movie)
+    const movieData=useSelector(store=>store.movies?.movie)
+    console.log(movieData,"movieData");
     const trailerData=movieData?.results[6]
+    console.log(trailerData,"trailerData");
     const trailerapi=useSelector(store=>store.movies.trailer)
-   
+   console.log(trailerapi,"trailerapi");
 useEffect(()=>{
   
   if(!trailerapi) {
@@ -17,7 +19,6 @@ useEffect(()=>{
   }
    },[])
   
-   
    if(!movieData) return
   return (
 

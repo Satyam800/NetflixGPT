@@ -9,6 +9,7 @@ import { signOut } from "firebase/auth";
 import { GPTSearchToggelButton } from "../Utils/Slice/GPTSlice";
 import { LanguageToggle } from "../Utils/Slice/LanguageSlice";
 import { Supported_Language } from "../Utils/constant";
+import { Logo } from "../Utils/constant";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Header = () => {
   const [isSignOut, SetisSignOut] = useState(false);
   const UserDataRef = useRef();
   const [headerbg,Setheaderbg]=useState(null)
+  const [dp,Setdp]=useState(false)
   const ShowGPTSearch=useSelector((store)=>store.GPT.isGPTSearchClicked)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -50,14 +52,13 @@ const Header = () => {
 
 
 useEffect(()=>{
-  const handleOutsideClick=(e)=>{
-    
+  const handleOutsideClick=(e)=>{   
     if(!UserDataRef.current?.contains(e.target)){
       SetisSignOut(false)
-    }
-   
+    }  
   }
  window.addEventListener("click",handleOutsideClick)
+
 
 },[])
  
@@ -95,6 +96,11 @@ useEffect(()=>{
     dispatch(LanguageToggle(e.target.value))
     console.log(e.target.value,"hbhkigbihbhib");
   }
+
+  const handlePicture=()=>{
+    console.log("hellodp");
+    Setdp(true)
+  }
   return (
     <>
       {!user_exist ? (
@@ -104,10 +110,9 @@ useEffect(()=>{
           </div>
         </div>
       ) : (
-        <div className=" fixed top-0 z-40 flex justify-between bg-gradient-to-tr from-slate-100  w-full h-16  opacity-100"
-      
+        <div className=" fixed top-0 z-40 flex justify-between bg-gradient-to-tr from-slate-100  w-full h-16  opacity-100"     
         >
-          <div className=" w-26 px-8 py-2  ">
+          <div className=" w-26 px-24 py-2  ">
             <img className="w-16" src={Netflix_logo} />
           </div>
           <div  className="flex w-[30%] justify-evenly ">
@@ -119,59 +124,48 @@ useEffect(()=>{
 
 {
   ShowGPTSearch &&
-  <div className="mt-5   align-baseline">
-          
+  <div className="mt-5 sm:align-baseline ">        
   <select className="bg-black text-red-500 rounded-3xl font-serif"
   onChange={handleLangChange}
   >
-    {Supported_Language.map((i)=>
-    
+    {Supported_Language.map((i)=> 
       <option key={i.identifier} value={i.identifier}>{i.name}</option>
     )}
   </select>
   </div>
-
-}
-        
-           
-    
-
-          
+}         
           <div
            ref={UserDataRef}
-            className=" relative h-12 w-12 rounded-3xl bg-zinc-950 mr-8 mt-2 cursor-pointer"
+            className=" absolute h-12 w-12 rounded-3xl bg-zinc-200 sm:left-[2%] left:[70%]  mt-2 cursor-pointer"
+            
             onClick={handleUser}
-          >
-                
-          
-            {isSignOut ? (
-
-        
+          >   
+            <div className="absolute w-full h-full rounded-full"> <img className="rounded-full" src={Logo}/></div>     
+            {isSignOut ? (       
           <div
-               
-               className=" absolute z-20 flex flex-col top-14 sm:top-18 right-2 w-32 h-32 bg-slate-300 rounded-md"
+               className=" absolute z-20 flex flex-col top-14 sm:top-18 right-2 w-32 h-32 left-[5%] bg-slate-300 rounded-md"
              >
               
-               <span
-                 className="w-22 h-12 font-semibold  text-center py-8 hover:bg-slate-100"
+               <div
+                 className="w-22 h-12 font-semibold  text-center py-8  hover:bg-slate-100"
                  onClick={handleSignOut}
                >
                  Sign Out
-               </span>
-               <span className="font-semibold text-center p-6">Theme</span>
-      
-
-
-             </div>
-   
-        
-               
-           
+               </div>
+               <div className="font-semibold text-center p-6 cursor-pointer hover:bg-slate-50" onClick={handlePicture}>Picture</div>
+             </div>           
             ) : null}
           </div>
         </div>
+
+      
         </div>
+        
       )}
+
+{dp?<div className=" absolute top-[40%] left-[40%] w-[20%] h-[30%] bg-black z-40 rounded-md shadow-lg ">
+           j
+        </div>:null}
     </>
   );
 };
