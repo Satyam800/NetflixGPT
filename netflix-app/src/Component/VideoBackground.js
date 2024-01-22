@@ -13,13 +13,12 @@ const VideoBackground = () => {
   const key_Object__Trailer = filterData?.length
     ? filterData?.filter((video) => video.name === "Official Final Trailer")
     : null
-
    const FinallyTrailerKey = useSelector((store) => store.movies.trailerVideo);
   useEffect(() => {
     dispatch(trailerVideo(key_Object__Trailer))
   },[])
   return (
-    <div className="sm:w-screen w-[98%] mt-[18%] sm:mt-0 h-40% sm:h-[50%] md:h-[70%]  ">
+    <div className="sm:w-screen w-[97%] mt-[18%] sm:mt-0 h-40% sm:h-[50%] md:h-[70%]  ">
       <iframe
         className=" w-screen  aspect-video"
         src={

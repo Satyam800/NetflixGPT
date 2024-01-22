@@ -19,7 +19,9 @@ const Header = () => {
   const UserDataRef = useRef();
   const [headerbg,Setheaderbg]=useState(null)
   const [dp,Setdp]=useState(false)
+  const UserRef=useRef(null)
   const ShowGPTSearch=useSelector((store)=>store.GPT.isGPTSearchClicked)
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
    
@@ -53,13 +55,13 @@ const Header = () => {
 
 useEffect(()=>{
   const handleOutsideClick=(e)=>{   
-    if(!UserDataRef.current?.contains(e.target)){
+    console.log(UserRef.current,"dataRed");
+    if(!UserDataRef.current?.contains(e.target) && !UserRef.current?.contains(e.target)){
+      console.log("callewed");
       SetisSignOut(false)
     }  
   }
  window.addEventListener("click",handleOutsideClick)
-
-
 },[])
  
 // useEffect(()=>{
@@ -69,10 +71,11 @@ useEffect(()=>{
 //   }
 // })
 // },[])
-  
+
+
   const handleUser = () => {
     SetisSignOut(true);
-  };
+  }
 
   const handleSignOut = (event) => {
     signOut(auth)
@@ -84,14 +87,10 @@ useEffect(()=>{
       });
     navigate("/");
   };
-
-
-
-  const handleGPTSearch=(e)=>{
+ const handleGPTSearch=(e)=>{
     e.stopPropagation()
   dispatch(GPTSearchToggelButton())
   }
-
   const handleLangChange=(e)=>{
     dispatch(LanguageToggle(e.target.value))
     console.log(e.target.value,"hbhkigbihbhib");
@@ -143,16 +142,17 @@ useEffect(()=>{
             <div className="absolute w-full h-full rounded-full"> <img className="rounded-full" src={Logo}/></div>     
             {isSignOut ? (       
           <div
-               className=" absolute z-20 flex flex-col top-14 sm:top-18 right-2 w-32 h-32 left-[5%] bg-slate-300 rounded-md"
-             >
-              
+               className=" absolute z-20 flex flex-col top-14 sm:top-18 right-2 w-32 h-22 left-[5%] bg-slate-300 rounded-md"
+               ref={UserRef}
+               
+             >             
                <div
                  className="w-22 h-12 font-semibold  text-center py-8  hover:bg-slate-100"
                  onClick={handleSignOut}
                >
                  Sign Out
                </div>
-               <div className="font-semibold text-center p-6 cursor-pointer hover:bg-slate-50" onClick={handlePicture}>Picture</div>
+               <div className="font-semibold text-center w-22 h-22 cursor-pointer hover:bg-slate-50" onClick={handlePicture}></div>
              </div>           
             ) : null}
           </div>
@@ -163,11 +163,14 @@ useEffect(()=>{
         
       )}
 
-{dp?<div className=" absolute top-[40%] left-[40%] w-[20%] h-[30%] bg-black z-40 rounded-md shadow-lg ">
-           j
-        </div>:null}
+{
+dp?<div className=" absolute top-[40%] left-[40%] w-[20%] h-[30%] bg-black z-40 rounded-md shadow-lg ">
+           jdjf
+        </div>
+        :null
+        }
     </>
   );
-};
+}
 
 export default Header;
