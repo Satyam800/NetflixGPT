@@ -28,6 +28,6 @@ export const API_options= {
   
   export const IMG_CDN_URL="https://image.tmdb.org/t/p/w500"
 
-  export const OpenAI_API_keys=process.env.REACT_APP_OpenAI_API_keys
+  export const OpenAI_API_keys="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"
   export const Supported_Language=[{identifier:"English",name:"English"},{identifier:"Hindi",name:"Hindi"},{identifier:"Spanish",name:"Spanish"}]
   export const Logo=" https://img.freepik.com/premium-vector/cinema-movie-background-popcorn-filmstrip-clapboard-tickets-movie-time-background_41737-248.jpg?size=626&ext=jpg&ga=GA1.1.1099964274.1705469206&semt=ais"
