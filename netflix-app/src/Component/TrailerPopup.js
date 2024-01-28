@@ -3,7 +3,7 @@ import React from 'react'
 const TrailerPopup = ({data}) => {
   
     const item=data?.filter((i)=>i.type==="Trailer")
-if(!item[0]) return
+if(item[0]==undefined) return
   return (
    <>
    <div className='w-full h-full '>
