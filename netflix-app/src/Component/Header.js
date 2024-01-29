@@ -123,8 +123,8 @@ useEffect(()=>{
 
 {
   ShowGPTSearch &&
-  <div className="mt-5 sm:align-baseline ">        
-  <select className="bg-black text-red-500 rounded-3xl font-serif"
+  <div className=" mt-5 sm:align-baseline ">        
+  <select className="  bg-black text-red-500 rounded-3xl font-serif"
   onChange={handleLangChange}
   >
     {Supported_Language.map((i)=> 

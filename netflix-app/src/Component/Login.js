@@ -118,23 +118,23 @@ const Login = () => {
         </div>
       </div>
 
-      <div className=" fixed mt-[15%] ml-[35%] h-[65%] w-[28%] bg-gradient-to-t from-black z-40">
+      <div className=" fixed  mt-[28%]  ml-[0]   h-[68%] w-[52%] sm:ml-[20%]  sm:mt-[12%]  bg-gradient-to-t from-black z-40">
         <div className="h-8 w-full bg-gradient-to-r from-red-400"></div>
-        <div className="text-3xl text-white font-semibold ml-24 pt-4">
+        <div className="text-3xl text-white font-semibold ml-[30%] pt-4 cursor-pointer">
           {isLoginform ? "Sign In" : "Sign Up"}
         </div>
-        <form>
+        <form >
           {!isLoginform && (
             <input
               ref={name}
-              className="focus:outline-none focus:border-sky-500 w-1/2 h-12 ml-[20%] my-4 px-8 bg-slate-800 text-white"
+              className="focus:outline-none focus:border-sky-500 sm:w-1/2 sm:h-12 sm:ml-[20%] w-full h-16 sm:my-4 my-2 sm:px-8 px-2 bg-slate-800 text-white"
               type="text"
               placeholder="Name"
             />
           )}
           <input
             ref={email}
-            className="focus:outline-none focus:border-sky-500 w-1/2 h-12 ml-[20%] my-4 px-8 bg-slate-800 text-white"
+            className="focus:outline-none focus:border-sky-500 sm:w-1/2 sm:h-12 sm:ml-[20%] w-full h-16 sm:my-4 my-2 sm:px-8 px-2 bg-slate-800 text-white"
             type="email"
             placeholder="Email"
           />
@@ -157,7 +157,7 @@ const Login = () => {
 
         <div className="text-yellow-200 ml-[20%] font-mono">
           {isLoginform ? "New to Netflix?" : "Already registerd?"}
-          <span onClick={handleSignIn} className="font-bold text-white">
+          <span onClick={handleSignIn} className="font-bold text-white cursor-pointer">
             {isLoginform ? "Sign up now." : "Sign In Now"}
           </span>
         </div>
