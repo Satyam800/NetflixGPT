@@ -30,7 +30,7 @@ const MovieCard = ({img,title,id}) => {
   return (
     <>
   <img
-      className='w-32 h-48 m-2 rounded-md'
+      className='w-32 h-48 m-2 rounded-md '
         alt="Movie_IMG"
         src={IMG_CDN_URL + img}
         onMouseEnter={()=>SetisHover(true)}
