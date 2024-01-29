@@ -6,9 +6,9 @@ const GptmovieSuggs = () => {
     
   return (
    <>  
-   <div className=' fixed overflow-y-scroll  mt-[20%] bg-gradient-to-r from-black from-10% via-sky-200 via-30% to-orange-100 to-90% opacity-80 m-4 p-3'>
+   <div className=' fixed overflow-x-scroll top-[12%]  sm:top-[38%] bg-gradient-to-r from-black from-10% via-sky-200 via-30% to-orange-100 to-90% opacity-80 m-4 p-3'>
   {
-    <div className='  flex flex-wrap '>
+    <div className=' flex '>
 
 {TMDB_SearchResult?.map(i=><MovieCard img={i?.poster_path} title={i.title} key={i.id} />)}
     </div>
