@@ -7,9 +7,7 @@ const LanguageSlice = createSlice({
   },
   reducers: {
    LanguageToggle: (state, action) => {
-       
-    state.languageChange=action.payload
-      
+    state.languageChange=action.payload     
     },
   
   },
