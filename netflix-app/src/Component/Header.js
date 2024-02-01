@@ -21,6 +21,8 @@ const Header = () => {
   const [dp,Setdp]=useState(false)
   const UserRef=useRef(null)
   const ShowGPTSearch=useSelector((store)=>store.GPT.isGPTSearchClicked)
+  const currentUser=auth.currentUser
+   
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -152,7 +154,7 @@ useEffect(()=>{
                >
                  Sign Out
                </div>
-               <div className="font-semibold text-center w-22 h-22 cursor-pointer hover:bg-slate-50" onClick={handlePicture}></div>
+               <div className="font-semibold text-center w-22 h-22 cursor-pointer hover:bg-slate-50" onClick={handlePicture}>Profile</div>
              </div>           
             ) : null}
           </div>

@@ -4,7 +4,7 @@ import { API_options } from "../constant";
 
 export const API_call=createAsyncThunk("API",async(query)=>{
   const modify_query="Act as a Movie Recommendation system and suggest some latest movies for the query"+query.current.value
-  +" only gives me name of 5 movies, seperated like the example result giving ahead. Example Result: [Avenger,Thor Rangrok,Doctor Strange,Iron Man,Captain America] rtc"
+  +"only gives me name of  movies, seperated like the example result giving ahead. Example Result: [Avenger,Thor Rangrok,Doctor Strange,Iron Man,Captain America] rtc"
   const gptResult = await openai.chat.completions.create({
     messages: [{ role: 'user', content:modify_query}],
     model: 'gpt-3.5-turbo',
@@ -15,7 +15,6 @@ return gptResult.choices[0].message.content.split(",")
 })
 
 export const Movie_fetch=createAsyncThunk("TMDB",async(movie)=>{
-
   const call= async (i)=>{
  
     const Result=await fetch('https://api.themoviedb.org/3/search/movie?query='+i+'&include_adult=false&language=en-US&page=1', API_options)
