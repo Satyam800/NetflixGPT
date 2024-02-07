@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Login from "./Login";
 import Browse from "./Browse";
+import MovieReview from "./MovieReview";
+import GptmovieSuggs from "./GptmovieSuggs";
 
 import {
   RouterProvider,
@@ -18,6 +20,10 @@ const Body = () => {
       path: "/browse",
       element: <Browse />,
     },
+    {
+      path:'/movieReview',
+      element:<MovieReview/>
+    }
   ]);
 
  

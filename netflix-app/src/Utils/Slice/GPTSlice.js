@@ -3,8 +3,8 @@ import openai from "../OpenAI";
 import { API_options } from "../constant";
 
 export const API_call=createAsyncThunk("API",async(query)=>{
-  const modify_query="Act as a Movie Recommendation system and suggest some latest movies for the query"+query.current.value
-  +"only gives me name of  movies, seperated like the example result giving ahead. Example Result: [Avenger,Thor Rangrok,Doctor Strange,Iron Man,Captain America] rtc"
+  const modify_query="Act as a Movie Recommendation system and suggest some latest movies for the query"+query
+  +"only gives me a five name of  movies, seperated like the example result giving ahead. Example Result: [Avenger,Thor Rangrok,Doctor Strange,Iron Man,Captain America] etc"
   const gptResult = await openai.chat.completions.create({
     messages: [{ role: 'user', content:modify_query}],
     model: 'gpt-3.5-turbo',
@@ -27,8 +27,7 @@ const dummy= movie.map((i)=>{
 })
 
  const result= await Promise.all(dummy)
-  return result
-
+  return result 
 })
 
 export const Trailer=createAsyncThunk("trailerPopup",async(id)=>{
