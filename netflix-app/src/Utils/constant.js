@@ -33,3 +33,13 @@ export const API_options= {
 
   export const Supported_Language=[{identifier:"English",name:"English"},{identifier:"Hindi",name:"Hindi"},{identifier:"Spanish",name:"Spanish"}]
   export const Logo=" https://img.freepik.com/premium-vector/cinema-movie-background-popcorn-filmstrip-clapboard-tickets-movie-time-background_41737-248.jpg?size=626&ext=jpg&ga=GA1.1.1099964274.1705469206&semt=ais"
+
+export const now = new Date();
+export const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// // Get the current year, month, day, hour, minute, second
+// const year = now.getFullYear();
+// const month = now.getMonth() + 1; // Note: Month is zero-based, so we add 1
+// const day = now.getDate();
+// const hour = now.getHours();
+// const minute = now.getMinutes();
+// const second = now.getSeconds();
