@@ -3,7 +3,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import MovieReview from "./MovieReview";
 import GptmovieSuggs from "./GptmovieSuggs";
-
+import Error from "./Error";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -15,6 +15,7 @@ const Body = () => {
     {
       path: "/",
       element: <Login />,
+      errorElement:<Error/>
     },
     {
       path: "/browse",
@@ -23,7 +24,8 @@ const Body = () => {
     {
       path:'/movieReview',
       element:<MovieReview/>
-    }
+    },
+    
   ]);
 
  

@@ -6,7 +6,7 @@ import store from './Utils/appStore'
 import { RouterProvider,createBrowserRouter } from 'react-router-dom'
 const App = () => {
   
- 
+  
   return (
    <>
    <Provider store={store}>
