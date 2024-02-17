@@ -4,11 +4,13 @@ import Browse from "./Browse";
 import MovieReview from "./MovieReview";
 import GptmovieSuggs from "./GptmovieSuggs";
 import Error from "./Error";
+import Profile from "./Profile";
 import {
   RouterProvider,
   createBrowserRouter,
   useNavigate,
 } from "react-router-dom";
+
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -25,6 +27,10 @@ const Body = () => {
       path:'/movieReview',
       element:<MovieReview/>
     },
+    {
+      path:"/profile",
+      element:<Profile/>
+    }
     
   ]);
 

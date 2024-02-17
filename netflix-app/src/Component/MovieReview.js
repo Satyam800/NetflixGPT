@@ -91,7 +91,7 @@ useEffect(()=>{
 },[image,down])
   return ( 
     <>
-      <div className="w-[80%] h-[85%]">
+      <div className="w-full h-screen bg-gradient-to-r from-green-400 to-blue-500 mt-0">
         <div className="m-6">
           <div className="text-xl m-1">Movie title</div>
           <input
@@ -104,6 +104,7 @@ useEffect(()=>{
         <div className=" m-2">
           <div className="text-xl m-4">Review</div>
           <ReactQuill
+           style={{ backgroundColor: '#f0f0f0' }}
             theme="snow"
             value={content}
             onChange={handleChange}
@@ -134,11 +135,13 @@ useEffect(()=>{
           />
 
           <div className="relative w-28 h-28 m-2 rounded-full  bg-slate-300 hover:bg-slate-200">
+
             <img
               src={previewUrl}
-              alt="img"
+              
               className="absolute w-full h-full rounded-full"
             />
+
             <label htmlFor="file-upload" className="custom-file-upload">
               <FaPen className=" absolute top-[32%] left-[32%]  w-8 h-8 rounded-full cursor-pointer" />
             </label>
