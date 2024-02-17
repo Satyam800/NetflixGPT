@@ -18,7 +18,7 @@ export const API_options= {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNWZlZmUyNzVhYWU3Y2U0MWRjOGVhOWRiZTg2ZTA3OSIsInN1YiI6IjYzZTBlM2MwODc0MWM0MDA5OWI1NWRiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6WGCQf3e-YU-701l-n9HMez-eZC8adbEob3t7ABkE7k'
     }
   }
-  
+
   export const Popular_options={
     method: 'GET',
     headers: {
@@ -27,7 +27,7 @@ export const API_options= {
     }
   };
 
-  
+
   export const IMG_CDN_URL="https://image.tmdb.org/t/p/w500"
 
   export const OpenAI_API_key=process.env.REACT_APP_OpenAI_API_keys
