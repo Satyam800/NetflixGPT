@@ -15,23 +15,7 @@ const MainConatainer = () => {
    console.log(trailerapi,"trailerapi");
    const [onlinestate,Setonlinestate]=useState(navigator.online)
 
-useEffect(()=>{
- const handleOnline=()=>{
-  Setonlinestate(true)
- }
 
- const handleOffline=()=>{
-  Setonlinestate(false)
- }
-
- window.addEventListener('online',handleOnline)
- window.addEventListener('offline',handleOffline)
-
- return ()=>{
-  window.removeEventListener('online', handleOnline);
-  window.removeEventListener('offline', handleOffline);
- }
-},[])
 
 useEffect(()=>{
   

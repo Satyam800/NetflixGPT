@@ -26,11 +26,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const analytics = getAnalytics(app);
-const db = getFirestore(app);
-export const auth = getAuth();
-const data=doc(db,'OPENAI','MNTWy1f9rxVVcLPGiWMY')
 
-export const key=await getDoc(data)
+export const auth = getAuth();
+
 
 
 
