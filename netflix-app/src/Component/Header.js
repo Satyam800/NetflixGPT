@@ -10,6 +10,7 @@ import { GPTSearchToggelButton } from "../Utils/Slice/GPTSlice";
 import { LanguageToggle } from "../Utils/Slice/LanguageSlice";
 import { Supported_Language } from "../Utils/constant";
 import { Logo } from "../Utils/constant";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Header = () => {
   const [dp,Setdp]=useState(false)
   const UserRef=useRef(null)
   const ShowGPTSearch=useSelector((store)=>store.GPT.isGPTSearchClicked)
-  const currentUser=auth.currentUser
+  
    
 
   useEffect(() => {
@@ -79,16 +80,7 @@ useEffect(()=>{
     SetisSignOut(true);
   }
 
-  const handleSignOut = (event) => {
-    signOut(auth)
-      .then(() => {
-        dispatch(removeUser());
-      })
-      .catch((error) => {
-        console.log("Error in Signout", error);
-      });
-    navigate("/");
-  };
+  
  const handleGPTSearch=(e)=>{
     e.stopPropagation()
   dispatch(GPTSearchToggelButton())
@@ -141,22 +133,8 @@ useEffect(()=>{
             
             onClick={handleUser}
           >   
-            <div className="absolute w-full h-full rounded-full"> <img className="rounded-full" src={Logo}/></div>     
-            {isSignOut ? (       
-          <div
-               className=" absolute z-20 flex flex-col top-14 sm:top-18 right-2 w-32 h-22 left-[5%] bg-slate-300 rounded-md"
-               ref={UserRef}
-               
-             >             
-               <div
-                 className="w-22 h-12 font-semibold  text-center py-8  hover:bg-slate-100"
-                 onClick={handleSignOut}
-               >
-                 Sign Out
-               </div>
-               <div className="font-semibold text-center w-22 h-22 cursor-pointer hover:bg-slate-50" onClick={handlePicture}>Profile</div>
-             </div>           
-            ) : null}
+            <Link to="/profile"><div className="absolute cursor-pointer w-full h-full rounded-full"> <img className="rounded-full" src={Logo}/></div>  </Link>   
+           
           </div>
         </div>
 

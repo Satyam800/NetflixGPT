@@ -44,14 +44,13 @@ useEffect(()=>{
   return (
 
 <>
-{onlinestate?
+
 <div className=' mb-4 '>
 <VideoBackground/>
  <VideoTitle/>
 </div>
-:
-<Offline/>
-}
+
+
 </>
   
   )
