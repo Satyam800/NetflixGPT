@@ -18,6 +18,7 @@ export const API_options= {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNWZlZmUyNzVhYWU3Y2U0MWRjOGVhOWRiZTg2ZTA3OSIsInN1YiI6IjYzZTBlM2MwODc0MWM0MDA5OWI1NWRiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6WGCQf3e-YU-701l-n9HMez-eZC8adbEob3t7ABkE7k'
     }
   }
+  
   export const Popular_options={
     method: 'GET',
     headers: {
