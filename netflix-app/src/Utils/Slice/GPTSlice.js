@@ -57,7 +57,7 @@ const GPTSlice = createSlice({
     state.movie_array=action.payload
     }).addCase(Movie_fetch.fulfilled,(state,action)=>{
       console.log(action.payload,"action.payload.json().results")
-      state.final_result=action.payload.flat()
+      state.final_result=action.payload.flat().reverse()
     }).addCase(Trailer.fulfilled,(state,action)=>{
       state.trailer=action.payload
       console.log(action.payload,"loadeed");
