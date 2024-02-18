@@ -34,13 +34,16 @@ const MovieReview = () => {
 
   console.log(rating, "rating");
   const handlePreview = (e) => {
-    SetisPreview(true);
+    SetisPreview(true)
   };
 
+  
   const handleChange = (value) => {
-    console.log(descriptionRef.current?.value, "value");
-    Setcontent(value);
-  };
+    console.log(descriptionRef.current?.value, "value")
+    Setcontent(descriptionRef.current.getEditor().getText());
+    console.log(value,'sarta,');
+  }
+
 
   const cancelPreview = () => {
     SetisPreview(false);
@@ -61,10 +64,12 @@ const MovieReview = () => {
   };
 
   const shareToTwitter = (title, image, content) => {
+    if (!descriptionRef.current) return;
+    const plainText = descriptionRef.current.getEditor().getText();
     console.log(title,image,content,"hjbhjv");
     const url = "https://twitter.com/intent/tweet" +
                 `?text=${encodeURIComponent(`${title}
-                 ${encodeURIComponent(content.replace(/<p[^>]*>/g, '').replace(/<\/p>/g, ''))}
+                 ${plainText}
                  ${rating} ${JSON.stringify("★").replace("", '')} 
                 `)}` +
                 `&description=${encodeURIComponent(content)}`;
@@ -107,9 +112,10 @@ useEffect(()=>{
            style={{ backgroundColor: '#f0f0f0' }}
             theme="snow"
             value={content}
-            onChange={handleChange}
-            className="shadow-lg m-4"
+            onChange={Setcontent}
+         
             ref={descriptionRef}
+            
           />
         </div>
 

@@ -20,10 +20,12 @@ const Profile = () => {
       };
   return (
    <>
- <div className='absolute w-[22%] h-[28%] top-[30%] left-[38%] bg-green-100'>
-  <span className='ml-[15%]'>{currentUser?.displayName}</span>
-  <span className='ml-[15%]'>{currentUser?.email }</span>
-  <div>----------------------------------------------------</div>
+ <div className='absolute w-[28%] h-[28%] top-[30%] left-[38%] bg-green-100 '>
+  <div className='flex flex-col'>
+  <span className='ml-[28%]'>{currentUser?.displayName}</span>
+  <span className='ml-[28%]'>{currentUser?.email }</span>
+  </div>
+  <div className='ml-[20%]'>------------------------------------------</div>
        <div className='w-22 h-12 font-semibold  text-center py-8 cursor-pointer  hover:bg-slate-100 ' onClick={handleSignOut}>Signout</div>
 </div>      
    </>

@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 const GPTSearchContainer = () => {
   const dispatch = useDispatch();
   const SearchText = useRef(null);
+  const speechRef=useRef()
   const toggelLang = useSelector((store) => store.lang.languageChange);
   const TMDB_movie = useSelector((store) => store.GPT.movie_array);
   const TMDB_SearchResult = useSelector((store) => store.GPT.final_result);
@@ -31,17 +32,20 @@ const GPTSearchContainer = () => {
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
-
+  } = useSpeechRecognition()
+  
+  
+  
   const handleOpenAISearch = () => {
     Setloader(true);
     dispatch(API_call(SearchText.current.value));
-  };
+  }
+   
 
   const handleSpeech = () => {
-    console.log(isSpeech, "isSpeech");
-    dispatch(API_call(isSpeech));
-  };
+    console.log(isSpeech,"isSpeech")
+    
+  }
 
   useEffect(() => {
     dispatch(Movie_fetch(TMDB_movie));
@@ -50,28 +54,40 @@ const GPTSearchContainer = () => {
 
   const removeSpeechPopUp = () => {
     SetisMicOn(false);
-    SpeechRecognition.stopListening();
-    resetTranscript();
-    const synth = new Tone.Synth().toDestination();
-
+    SpeechRecognition.stopListening()
+  
+    resetTranscript()
+    const synth = new Tone.Synth().toDestination()
+   
     //play a middle 'C' for the duration of an 8th note
-    synth.triggerAttackRelease("E4", "9n");
+    synth.triggerAttackRelease("E4", "9n")
+
   };
 
   const speechToText = function () {
-    const synth = new Tone.Synth().toDestination();
+    const synth = new Tone.Synth().toDestination()
 
     //play a middle 'C' for the duration of an 8th note
-    synth.triggerAttackRelease("A4", "9n");
-    SetisMicOn(true);
-    SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
-    console.log(isSpeech, "llll");
-    setTimeout(() => {
-      handleSpeech();
-      removeSpeechPopUp();
-    }, 8000);
-  };
+    synth.triggerAttackRelease("A4", "9n")
+    SetisMicOn(true)
+    SpeechRecognition.startListening({ continuous: true, language: "en-IN" })
+    console.log(isSpeech, "llll")
+  
+      
+    
+    
+  }
+useEffect(()=>{
+  SetisSpeech(transcript)
+  console.log(isSpeech,"isSpeech");
+},[transcript])
 
+const handleSpeechSearch=()=>{
+  console.log(isSpeech,"bbbb");
+  dispatch(API_call( isSpeech)) 
+  removeSpeechPopUp()
+}
+  
   if (!browserSupportsSpeechRecognition) {
     return <span> Browser doesn't support speech recognition </span>;
   }
@@ -131,6 +147,8 @@ const GPTSearchContainer = () => {
           <div className="animate-ping w-12 h-12 bg-red-300 rounded-full  p-2 absolute top-[80%] left-[44%] ">
             <IoMdMic size={32} />
           </div>
+
+          <div className="absolute font-serif w-22 h-8 bg-red-100 rounded-md p-1 cursor-pointer top-[70%] left-[35%]" onClick={handleSpeechSearch}>Search</div>
           <div className="text-2xl">{transcript}</div>
         </div>
       ) : null}
