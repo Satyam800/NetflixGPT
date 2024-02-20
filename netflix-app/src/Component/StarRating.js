@@ -17,7 +17,7 @@ const StarRating = ({starCount}) => {
    
   return (
     <>
-      <div className="flex">
+      <div className="flex ml-2">
       {Array(starCount)
         .fill("")
         .map((i,index) =>(
