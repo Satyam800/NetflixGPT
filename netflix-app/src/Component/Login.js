@@ -18,7 +18,7 @@ const Login = () => {
   // Either u can use state variable to store value of form or use reference of that thats why we r using useRef hook
 
   const name = useRef();
-  
+  const [animate,SetAnimate]=useState(false)
   const email = useRef();
   const password = useRef();
 
@@ -26,10 +26,12 @@ const Login = () => {
   const [errormessage, SeterrorMessage] = useState();
 
   const handleSignIn = () => {
+    SetAnimate(true)
     setisLoginform(!isLoginform);
   };
 
   const handleSubmitbutton = (e) => {
+
     e.preventDefault();
     SeterrorMessage(
       validateForm(
@@ -106,9 +108,7 @@ const Login = () => {
         });
     }
   };
-
-
-
+  
   return (
     <>
       <div className="absolute">
@@ -124,7 +124,7 @@ const Login = () => {
 
       <div className=" fixed  mt-[28%]  ml-[0]   h-[68%] w-[52%] sm:ml-[20%]  sm:mt-[12%]  bg-gradient-to-t from-black z-40">
         <div className="h-8 w-full bg-gradient-to-r from-red-400"></div>
-        <div className="text-3xl text-white font-semibold ml-[30%] pt-4 cursor-pointer">
+        <div className={` text-3xl text-white font-semibold ml-[30%] pt-4 cursor-pointer`} onClick={()=>SetAnimate(true)}>
           {isLoginform ? "Sign In" : "Sign Up"}
         </div>
         <form >
@@ -152,16 +152,16 @@ const Login = () => {
 
           <input
             onClick={handleSubmitbutton}
-            className=" w-1/2 h-12 ml-[20%] my-4 px-8 bg-red-600 cursor-pointer font-semibold"
+            className="w-1/2 h-12 ml-[20%] my-4 px-8 bg-red-600 cursor-pointer font-semibold"
             type="submit"
             name="Sign In"
             value={isLoginform ? "Sign In" : "Sign Up"}
           />
         </form>
-
+                
         <div className="text-yellow-200 ml-[20%] font-mono">
           {isLoginform ? "New to Netflix?" : "Already registerd?"}
-          <span onClick={handleSignIn} className="font-bold text-white cursor-pointer">
+          <span onClick={handleSignIn} className={`${animate && "bg-yellow-100 "} font-bold text-white cursor-pointer`} >
             {isLoginform ? "Sign up now." : "Sign In Now"}
           </span>
         </div>

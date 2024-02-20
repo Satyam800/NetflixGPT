@@ -27,6 +27,10 @@ const GPTSearchContainer = () => {
   const [loader, Setloader] = useState(false);
   const [isSpeech, SetisSpeech] = useState(null);
   const [isMicOn, SetisMicOn] = useState(false);
+  const [isReview,setisReview]=useState(false)
+  const cancelPreview=useSelector(store=>store.lang.iscancel)
+ const toogleReview=useSelector(store=>store.lang.toggle)
+
   const {
     transcript,
     listening,
@@ -34,7 +38,10 @@ const GPTSearchContainer = () => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition()
   
-  
+  useEffect(()=>{
+setisReview(cancelPreview)
+
+  },[toogleReview])
   
   const handleOpenAISearch = () => {
     Setloader(true);
@@ -87,6 +94,9 @@ const handleSpeechSearch=()=>{
   dispatch(API_call( isSpeech)) 
   removeSpeechPopUp()
 }
+const handleReview=()=>{
+  setisReview(true)
+}
   
   if (!browserSupportsSpeechRecognition) {
     return <span> Browser doesn't support speech recognition </span>;
@@ -94,12 +104,17 @@ const handleSpeechSearch=()=>{
 
   return (
     <>
-      
-   <Link to="/movieReview">
-   <div className=" absolute animate-bounce  top-[85%] left-[43%] w-22 h-12 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-xl p-2 rounded-lg cursor-pointer">
-        Movie Review
+   <div className=" absolute animate-bounce  top-[85%] left-[43%] w-22 h-12 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-xl p-2 rounded-lg cursor-pointer" onClick={handleReview}>
+   {
+        isReview?
+        null:"Movie Review"
+       }
       </div>
-   </Link>
+       
+       {
+        isReview?
+        <MovieReview/>:null
+       }
       
       <div className=" fixed top-0 -z-10">
         <img
@@ -137,7 +152,7 @@ const handleSpeechSearch=()=>{
       {TMDB_SearchResult?.length ? <GptmovieSuggs /> : null}
 
       {isMicOn ? (
-        <div className=" absolute w-[30%] h-[35%] top-[38%] left-[33%] bg-slate-100 rounded-md shadow-lg ">
+        <div className=" absolute w-[30%] h-[35%] top-[38%] left-[33%] bg-gradient-to-r from-indigo-200 to-yellow-100 rounded-md shadow-lg ">
           <div
             className="w-12 h-12 bg-slate-300 rounded-full hover:bg-slate-500 p-2 absolute  left-[90%] cursor-pointer "
             onClick={removeSpeechPopUp}
@@ -148,8 +163,8 @@ const handleSpeechSearch=()=>{
             <IoMdMic size={32} />
           </div>
 
-          <div className="absolute font-serif w-22 h-8 bg-red-100 rounded-md p-1 cursor-pointer top-[70%] left-[35%]" onClick={handleSpeechSearch}>Search</div>
-          <div className="text-2xl">{transcript}</div>
+          <div className="absolute bg-black text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  hover:bg-indigo-500 duration-300 font-serif w-22 h-8 rounded-md p-1 cursor-pointer top-[70%] left-[42%]" onClick={handleSpeechSearch}>Search</div>
+          <div className="text-2xl p-6 font-serif">{transcript}</div>
         </div>
       ) : null}
     </>
