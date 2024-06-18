@@ -7,7 +7,7 @@ export const API_call=createAsyncThunk("API",async(query)=>{
   +"only gives me a five name of  movies, seperated like the example result giving ahead. Example Result: [Avenger,Thor Rangrok,Doctor Strange,Iron Man,Captain America] etc"
   const gptResult = await openai.chat.completions.create({
     messages: [{ role: 'user', content:modify_query}],
-    model: 'gpt-3.5-turbo-16k',
+    model: 'gpt-3.5-turbo',
   })
 
 return gptResult.choices[0].message.content.split(",")
